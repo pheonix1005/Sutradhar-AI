@@ -107,7 +107,7 @@ export function ActivityLog() {
 
   const fetchLogs = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/logs");
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/logs`);
       const data = await response.json();
       // Ensure timestamps are Date objects
       const formattedLogs = data.map((log: any) => ({
@@ -121,15 +121,15 @@ export function ActivityLog() {
   };
 
   const addLog = async (logData: Omit<LogEntry, "id">) => {
-    // Generate a temporary local ID
-    const tempLog = { ...logData, id: `log-${Date.now()}` } as LogEntry;
+    // Generate a temporary local ID with random suffix to ensure uniqueness
+    const tempLog = { ...logData, id: `log-${Date.now()}-${Math.random().toString(36).substr(2, 9)}` } as LogEntry;
 
     // Update local UI immediately for responsiveness
     setLogs(prev => [...prev, tempLog]);
 
     try {
       // Save to cloud
-      const response = await fetch("http://localhost:3001/api/logs", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/logs`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(logData)
@@ -189,7 +189,7 @@ export function ActivityLog() {
     try {
       const pipelineDesc = buildPipelineDescription(nodes, connections);
 
-      const res = await fetch("http://localhost:3001/api/chat", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -267,7 +267,7 @@ export function ActivityLog() {
 
   const clearLogs = useCallback(async () => {
     try {
-      await fetch("http://localhost:3001/api/logs", { method: "DELETE" });
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/logs`, { method: "DELETE" });
       setLogs([]);
     } catch (error) {
       console.warn("Activity log server offline or starting up.", error instanceof Error ? error.message : String(error));
