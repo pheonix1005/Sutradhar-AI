@@ -187,8 +187,9 @@ CRITICAL: You must always respond using extremely rich and professional Markdown
 3. You MUST include at least one relevant, high-quality image placeholder using Unsplash. Format: ![Descriptive Alt Text](https://source.unsplash.com/800x400/?<relevant-keyword>)
 Make the output look like a premium, ready-to-publish document.`;
 
+        const modelName = process.env.GEMINI_MODEL_NAME || 'gemini-2.0-flash';
         const model = genAI.getGenerativeModel({
-            model: 'gemini-2.0-flash',
+            model: modelName,
             systemInstruction: systemPrompt
         });
 
@@ -198,7 +199,7 @@ Make the output look like a premium, ready-to-publish document.`;
         res.status(200).json({ response: responseText });
     } catch (error) {
         console.error('Error in /api/chat:', error);
-        res.status(500).json({ error: 'An error occurred while communicating with Gemini.' });
+        res.status(500).json({ error: `An error occurred while communicating with Gemini: ${error.message || error}` });
     }
 });
 
