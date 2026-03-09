@@ -1,7 +1,20 @@
+"use client";
+
 import { Sidebar } from "@/components/sidebar";
 import { ActivityLog } from "@/components/activity-log";
+import { useAIStatus } from "@/hooks/use-ai-status";
 
 export default function ActivityPage() {
+  const { status } = useAIStatus();
+
+  const statusConfig = {
+    idle: { color: "bg-[#E6E6E6]", label: "Idle", pulse: false },
+    processing: { color: "bg-[#D4AF37]", label: "Running", pulse: true },
+    error: { color: "bg-[#E65100]", label: "Error", pulse: false },
+  };
+
+  const currentStatus = statusConfig[status];
+
   return (
     <div className="flex h-screen bg-[#0D1117] overflow-hidden">
       {/* Left Sidebar */}
@@ -24,8 +37,8 @@ export default function ActivityPage() {
               <div className="px-4 py-2 bg-[#16211E] border border-[#D4AF37]/30 rounded-lg">
                 <span className="text-xs text-[#9CA3AF] font-sans">Pipeline Status</span>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="w-2 h-2 bg-[#10B981] rounded-full animate-pulse" />
-                  <span className="text-sm text-[#E6E6E6] font-serif font-medium">Running</span>
+                  <span className={`w-2 h-2 ${currentStatus.color} rounded-full ${currentStatus.pulse ? 'animate-pulse' : ''}`} />
+                  <span className="text-sm text-[#E6E6E6] font-serif font-medium">{currentStatus.label}</span>
                 </div>
               </div>
             </div>
