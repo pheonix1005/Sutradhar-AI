@@ -37,21 +37,8 @@ const iconComponents = {
   bot: Bot,
 };
 
-const initialNodes: AgentNode[] = [
-  { id: "1", name: "Research Agent", role: "Web Search", iconType: "globe", status: "idle", x: 80, y: 120 },
-  { id: "2", name: "Summarizer", role: "Content Analysis", iconType: "file", status: "idle", x: 340, y: 60 },
-  { id: "3", name: "Data Processor", role: "Database Query", iconType: "database", status: "idle", x: 340, y: 280 },
-  { id: "4", name: "Report Writer", role: "Document Gen", iconType: "bot", status: "idle", x: 600, y: 170 },
-  { id: "5", name: "Email Handler", role: "Communication", iconType: "mail", status: "idle", x: 860, y: 170 },
-];
-
-const initialConnections: Connection[] = [
-  { id: "c1", from: "1", to: "2" },
-  { id: "c2", from: "1", to: "3" },
-  { id: "c3", from: "2", to: "4" },
-  { id: "c4", from: "3", to: "4" },
-  { id: "c5", from: "4", to: "5" },
-];
+const initialNodes: AgentNode[] = [];
+const initialConnections: Connection[] = [];
 
 const nodeTemplates = [
   { name: "Web Search", role: "Research", iconType: "globe" as const },
