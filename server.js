@@ -188,7 +188,7 @@ CRITICAL: You must always respond using extremely rich and professional Markdown
 Make the output look like a premium, ready-to-publish document.`;
 
         const model = genAI.getGenerativeModel({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-2.0-flash',
             systemInstruction: systemPrompt
         });
 
