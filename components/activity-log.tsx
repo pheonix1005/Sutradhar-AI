@@ -490,7 +490,7 @@ export function ActivityLog() {
         ) : (
           filteredLogs.map((log, index) => (
             <div
-              key={log._id || log.id || index}
+              key={log._id || log.id || `fallback-${index}`}
               className={cn(
                 "p-4 rounded-lg border transition-all duration-300",
                 getTypeColor(log.type),
