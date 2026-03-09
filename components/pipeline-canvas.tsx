@@ -91,7 +91,7 @@ export function PipelineCanvas() {
   const fetchPipelines = useCallback(async () => {
     setIsLoadingPipelines(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/pipelines`);
+      const response = await fetch(`/api/pipelines`);
       const data = await response.json();
       setSavedPipelines(Array.isArray(data) ? data : []);
     } catch (error) {
@@ -105,7 +105,7 @@ export function PipelineCanvas() {
     if (!pipelineName) return;
     setIsSaving(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/pipelines`, {
+      const response = await fetch(`/api/pipelines`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

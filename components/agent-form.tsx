@@ -71,7 +71,7 @@ export function AgentForm({ connectedTools, onAddTool, onRemoveTool, isDragging 
   const fetchAgents = async () => {
     setIsLoadingAgents(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/agents`);
+      const res = await fetch(`/api/agents`);
       if (res.ok) {
         const data = await res.json();
         setSavedAgents(Array.isArray(data) ? data : []);
@@ -118,7 +118,7 @@ export function AgentForm({ connectedTools, onAddTool, onRemoveTool, isDragging 
     setIsCreating(true);
     try {
       const roleLabel = roleOptions.find(r => r.id === selectedRole)?.label || selectedRole;
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/agents`, {
+      const res = await fetch(`/api/agents`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
