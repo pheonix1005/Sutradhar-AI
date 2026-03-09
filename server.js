@@ -184,7 +184,7 @@ ${customInstructions ? `Additional Instructions: ${customInstructions}` : ''}
 CRITICAL: You must always respond using extremely rich and professional Markdown formatting. 
 1. Use headings (##, ###), stylized lists, and bold text.
 2. If appropriate for the document type (e.g., reports, schedules), include Markdown tables.
-3. You MUST include at least one relevant, high-quality image placeholder using Unsplash. Format: ![Descriptive Alt Text](https://source.unsplash.com/800x400/?<relevant-keyword>)
+3. You MUST include at least one relevant, high-quality image using Pollinations AI. Format: ![Descriptive Alt Text](https://image.pollinations.ai/prompt/<detailed-relevant-keyword>?width=800&height=400&nologo=true)
 Make the output look like a premium, ready-to-publish document.`;
 
         const modelName = process.env.GEMINI_MODEL_NAME || 'gemini-2.0-flash';

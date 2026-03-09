@@ -61,6 +61,12 @@ export function MarkdownOutput({ content }: MarkdownOutputProps) {
                             {children}
                         </a>
                     ),
+                    img: ({ src, alt }) => (
+                        <span className="block my-4 rounded-xl overflow-hidden border border-[#D4AF37]/20">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={src} alt={alt || "Output image"} className="w-full h-auto object-cover max-h-[400px]" loading="lazy" />
+                        </span>
+                    ),
                 }}
             >
                 {content}
