@@ -101,7 +101,11 @@ export function DocumentPreview({
                     doc.setFont("helvetica", "normal");
                     doc.setFontSize(10);
                     doc.setTextColor(30, 30, 30); // Near black — readable on white
-                    const clean = line.replace(/\*\*(.*?)\*\*/g, "$1").replace(/\*(.*?)\*/g, "$1").replace(/`(.*?)`/g, "$1");
+                    const clean = line
+                        .replace(/!\[(.*?)\]\(.*?\)/g, "[Image: $1]") // Replace image markdown with text
+                        .replace(/\*\*(.*?)\*\*/g, "$1")
+                        .replace(/\*(.*?)\*/g, "$1")
+                        .replace(/`(.*?)`/g, "$1");
                     const wrapped = doc.splitTextToSize(clean, pageW);
                     doc.text(wrapped, margin, y);
                     y += wrapped.length * 5.5 + 1;
