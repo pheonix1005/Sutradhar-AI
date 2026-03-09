@@ -38,8 +38,8 @@ const iconComponents = {
 };
 
 const initialNodes: AgentNode[] = [
-  { id: "1", name: "Research Agent", role: "Web Search", iconType: "globe", status: "completed", x: 80, y: 120 },
-  { id: "2", name: "Summarizer", role: "Content Analysis", iconType: "file", status: "running", x: 340, y: 60 },
+  { id: "1", name: "Research Agent", role: "Web Search", iconType: "globe", status: "idle", x: 80, y: 120 },
+  { id: "2", name: "Summarizer", role: "Content Analysis", iconType: "file", status: "idle", x: 340, y: 60 },
   { id: "3", name: "Data Processor", role: "Database Query", iconType: "database", status: "idle", x: 340, y: 280 },
   { id: "4", name: "Report Writer", role: "Document Gen", iconType: "bot", status: "idle", x: 600, y: 170 },
   { id: "5", name: "Email Handler", role: "Communication", iconType: "mail", status: "idle", x: 860, y: 170 },
